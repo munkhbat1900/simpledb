@@ -25,13 +25,13 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 add_executable(
-    example_tests
-    example_tests.cpp
+    simpledbtests
+    "file/blockid_test.cpp"
 )
 target_link_libraries(
-    example_tests
+    simpledbtests
     GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(example_tests)
+gtest_discover_tests(simpledbtests)
