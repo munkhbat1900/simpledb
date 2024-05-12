@@ -5,7 +5,10 @@ set(CMAKE_CXX_COMPILER "/usr/bin/clang++" CACHE STRING "clang++ compiler" FORCE)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+add_library(simpledb_lib STATIC file/blockid.cpp)
+
 add_executable(simpledb main.cpp)
+target_link_libraries(simpledb simpledb_lib)
 
 ###############
 # Testing
@@ -30,6 +33,7 @@ add_executable(
 )
 target_link_libraries(
     simpledbtests
+    simpledb_lib
     GTest::gtest_main
 )
 
