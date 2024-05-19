@@ -23,6 +23,7 @@ TEST(PageTest, WriteInt1) {
     EXPECT_EQ(static_cast<int>(static_cast<unsigned char>(page->contents()->at(4))), 1);
     EXPECT_EQ(static_cast<int>(static_cast<unsigned char>(page->contents()->at(5))), 0);
     EXPECT_EQ(static_cast<int>(static_cast<unsigned char>(page->contents()->at(6))), 0);
+    EXPECT_EQ(page->getInt(3), 345);
 }
 
 TEST(PageTest, WriteInt2) {
@@ -32,9 +33,25 @@ TEST(PageTest, WriteInt2) {
     EXPECT_EQ(static_cast<int>(static_cast<unsigned char>(page->contents()->at(4))), 205);
     EXPECT_EQ(static_cast<int>(static_cast<unsigned char>(page->contents()->at(5))), 91);
     EXPECT_EQ(static_cast<int>(static_cast<unsigned char>(page->contents()->at(6))), 7);
+
+    EXPECT_EQ(page->getInt(3), 123456789);
 }
 
 TEST(PageTest, GetIntException) {
     std::unique_ptr<Page> page = std::make_unique<Page>(9);
     EXPECT_THROW(page->setInt(7, 123456789), std::out_of_range);
+}
+
+TEST(PageTest, WriteString) {
+    std::unique_ptr<Page> page = std::make_unique<Page>(9);
+    page->setString(1, "munk");
+
+    EXPECT_EQ(page->getInt(1), 4);
+
+    EXPECT_EQ(page->contents()->at(5), 'm');
+    EXPECT_EQ((*page->contents())[6], 'u');
+    EXPECT_EQ((*page->contents())[7], 'n');
+    EXPECT_EQ((*page->contents())[8], 'k');
+
+    EXPECT_EQ(page->getString(1), "munk");
 }

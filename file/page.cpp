@@ -33,7 +33,7 @@ vector<char> Page::getBytes(int pOffset) {
         throw out_of_range("out of range of page: getBytes");
     }
     vector<char> bytes(len);
-    memcpy(&bytes[0], &(*mByteBuffer)[pOffset], sizeof(char));
+    memcpy(&bytes[0], &(*mByteBuffer)[pOffset + sizeof(int)], len);
     return bytes;
 }
 
@@ -42,7 +42,7 @@ void Page::setBytes(int pOffset, vector<char> &pBytes) {
         throw out_of_range("out of range of page: setBytes");
     }
     setInt(pOffset, pBytes.size());
-    memcpy(&(*mByteBuffer)[pOffset], &pBytes[0], pBytes.size());
+    memcpy(&(*mByteBuffer)[pOffset + sizeof(int)], &pBytes[0], pBytes.size());
 }
 
 string Page::getString(int pOffest) {
