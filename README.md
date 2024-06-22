@@ -1,6 +1,9 @@
 # simpledb
 
-cmake -S . -B build 
+cmake -S . -B build
+
 cmake --build build
+
 cd build
+
 ctest

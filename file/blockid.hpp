@@ -5,18 +5,17 @@
 
 class BlockID {
 public:
-  BlockID();
   BlockID(const BlockID &pBlk);
-  BlockID(const std::string &pFileName, int pBlockNum);
+  BlockID(std::string pFileName, int pBlockNum);
 
-  std::string fileName() const;
-  int number() const;
-  std::string toString() const;
+  [[nodiscard]] std::string fileName() const;
+  [[nodiscard]] int number() const;
+  [[nodiscard]] std::string toString() const;
   bool operator==(const BlockID &other) const;
 
 private:
   std::string mFileName;
-  int mBlockNum;
+  int mBlockNum{};
 };
 
 #endif

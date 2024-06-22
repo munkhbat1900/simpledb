@@ -19,7 +19,7 @@ public:
   void setBytes(int pOffset, vector<char> &pBytes);
   string getString(int pOffest);
   void setString(int pOffset, const string &pStr);
-  int maxLength(int pStrlen);
+  static int maxLength(int pStrlen);
   shared_ptr<vector<char>> contents();
 private:
     shared_ptr<vector<char>> mByteBuffer;

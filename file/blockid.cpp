@@ -1,10 +1,8 @@
 #include "blockid.hpp"
 
-BlockID::BlockID() {}
-BlockID::BlockID(const BlockID &pBlck)
-    : mFileName(pBlck.mFileName), mBlockNum(pBlck.mBlockNum) {}
-BlockID::BlockID(const std::string &pFileName, int pBlockNum)
-    : mFileName(pFileName), mBlockNum(pBlockNum) {}
+BlockID::BlockID(const BlockID &pBlck) = default;
+BlockID::BlockID(std::string pFileName, int pBlockNum)
+    : mFileName(std::move(pFileName)), mBlockNum(pBlockNum) {}
 
 std::string BlockID::fileName() const { return mFileName; }
 
