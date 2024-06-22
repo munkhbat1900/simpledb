@@ -1,5 +1,0 @@
-if(EXISTS "/Users/munku/Desktop/hobby/simpledb/cmake-build-debug/simpledbtests[1]_tests.cmake")
-  include("/Users/munku/Desktop/hobby/simpledb/cmake-build-debug/simpledbtests[1]_tests.cmake")
-else()
-  add_test(simpledbtests_NOT_BUILT simpledbtests_NOT_BUILT)
-endif()
